@@ -1,0 +1,19 @@
+name: "Workflow commands"
+on:
+    push:
+        branches:
+            - main
+jobs:
+    my-commands-jobs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "group logging"
+              run: |
+                echo "::group:: MyGroup messages"
+                echo "msg_1: hello ghost ji"
+                echo "msg_2: swagat hai apka"
+                echo "::endgroup::" 
+            - name: "setting up the env variable"
+              run: echo "MY_value=helo" >> $GITHUB_ENV
+            - name: "logging the env"
+              run: echo $MY_value                 

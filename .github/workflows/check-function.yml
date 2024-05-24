@@ -1,0 +1,30 @@
+name: function-check
+on: [push]
+
+jobs:
+    expression-functions:
+        runs-on: ubuntu-latest
+        steps:
+            - name: check if string contains something 
+              if: contains('hello World' , 'lo')
+              run: echo "the string contains the substring."
+            - name: check if the sting starts  with the given input
+              if: startsWith('namaste ji aur sunaiye' , 'nama')
+              run: echo "the strings really starts with the given input"
+            - name: check if the given string ends with the input stated
+              if: endsWith('need to design in more details','ails')
+              run: echo "working coorrectly"
+            - name: Format and echo
+              run: echo ${{ format('Hello {0} {1} {2}','ghost','rider','ji')}}
+            - name: conert job into json
+              run: "echo \"job context in Json : ${{toJSON(github.job)}}\""
+            - name: Parse json string
+              run: "echo \"Parsed Json: ${{fromJson('{\"hello\":\"world\"}').hello}}\""
+            - name: hash files
+              run: "echo \"Hashof files: ${{hashFiles('**/package-lock.json','**/Gemfile.lock')}}\""     
+            - name: the job is succeded
+              if: ${{success()}}
+              run: echo "Success!" 
+            - name: the job is failed
+              if: ${{failure()}}
+              run: echo "failure!"  

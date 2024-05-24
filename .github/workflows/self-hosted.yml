@@ -1,0 +1,15 @@
+name: self hosted runner 
+on:
+    push:
+        branches: 
+            - main
+    workflow_dispatch:        
+jobs:
+    example-self-hosted:
+        runs-on: self-hosted
+        steps:
+            - name: check our repo
+              uses: actions/checkout@v2
+            - name: Run one line script
+              run: echo "Hello Ghost ji from self hosted runner"   
+        

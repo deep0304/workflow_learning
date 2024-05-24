@@ -1,0 +1,15 @@
+name: conditional-check
+on: [push]
+jobs:
+    hello-world:
+        # if: github.repository == 'octo-org/octo repo prod'
+        if: github.repository == 'deep0304/crowdFunding'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "hello world if repository matches"
+              run: echo "hello world"
+    namste-ji:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Namaste ji"
+              run: echo "Namaste hmari taraf se"          

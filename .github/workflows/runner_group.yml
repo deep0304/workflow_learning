@@ -1,0 +1,14 @@
+name: runner group chck
+on: ['push']
+jobs:
+    check-runner-group:
+        runs-on:
+            group: self-runner
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v4
+              with:
+                node-version: '14'
+            - run: npm install -g bats
+            - run: bats -v
+   
